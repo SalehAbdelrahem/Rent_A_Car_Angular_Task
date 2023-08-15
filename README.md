@@ -1,5 +1,9 @@
 # Rent a Car _ Angular _ Task
 
+-searching a Car functionalites
+
+-rent acar functionalites
+
 -using angular material
 
 -using Pagination
