@@ -1,0 +1,99 @@
+<form class="row m-2" [formGroup]="MasterDetailForm" >
+  <div class="col-md-3">
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>customer Name</mat-label>
+      <input matInput placeholder="Enter customer name" formControlName="customerName">
+    </mat-form-field>
+  </div>
+
+
+
+  <div class="col-md-3">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>customer Driving License No</mat-label>
+      <input matInput placeholder="Enter customer Driving License No" formControlName="customerDrivingLicenseNo">
+    </mat-form-field>
+  </div>
+
+  <div class="col-md-3">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>payment</mat-label>
+      <input matInput placeholder="Enter payment" formControlName="payment">
+    </mat-form-field>
+  </div>
+  <div class="col-md-3">
+    <mat-form-field appearance="fill">
+      <mat-label>nationality</mat-label>
+      <mat-select formControlName="nationalityId" required>
+        <mat-option *ngFor="let nationality of NationalityList" [value]="nationality.id">
+          {{nationality.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="col-md-3">
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="transaction Date" formControlName="transactionDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+
+  <!--Boking Details-->
+  <div formArrayName="bookingDetailDTO">
+    <div *ngFor="let item of bookingDetailDTO.controls;let i=index">
+      <div [formGroupName]="i">
+        <div class="row">
+          <div class="col-md-3">
+            <mat-form-field appearance="fill">
+              <mat-label>Car Name</mat-label>
+              <mat-select formControlName="carName" required>
+                <mat-option *ngFor="let car of CarList" [value]="car.modelName">
+                  {{car.modelName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+
+          <div class="col-md-3">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>quantity</mat-label>
+              <input matInput placeholder="Enter quantity" formControlName="quantity">
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-3">
+
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker" placeholder="rent Duration Date" formControlName="rentDuration">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-1">
+
+            <button mat-fab color="warn" title="Delete Row" aria-label="Example icon button with a delete icon" (click)="deleteBookingDetails(i)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+   <strong class="fs-3 m-3 d-flex justify-content-center">
+     <button mat-mini-fab color="primary" title="Add New" aria-label="Example icon button with a plus one icon" (click)="addBookingDetails()">
+    <mat-icon>plus_one</mat-icon>
+  </button></strong>
+  </div>
+<strong class="d-flex justify-content-center ">
+  <button mat-raised-button color="primary" (click)="createMasterDetail()"  >Save</button>
+
+</strong>
+
+</form>

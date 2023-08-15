@@ -1,0 +1,28 @@
+
+<mat-card-title class="fs-3 mt-2 d-flex justify-content-center fw-bold">Rent a Car</mat-card-title>
+
+  <div class="row m-2">
+    <mat-form-field appearance="fill">
+      <mat-label>Selected Brands </mat-label>
+      <mat-select [(ngModel)]="BrandId" required>
+          <mat-option *ngFor="let brand of BrandList" [value]="brand.id">
+            {{brand.name}}
+          </mat-option>
+      </mat-select>
+  </mat-form-field>
+  </div>
+
+
+
+
+
+
+<div class="row">
+
+<app-content [RecivedBrandId]="BrandId"></app-content>
+
+</div>
+
+
+
+
